@@ -1,0 +1,11 @@
+#pycache
+*.pyc
+
+#Lib
+Lib/*
+
+#Scripts
+Scripts/*
+
+#virtual environment
+pyvenv.cfg
