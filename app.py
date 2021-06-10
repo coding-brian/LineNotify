@@ -12,7 +12,7 @@ def lineNotifyAutorize():
 
   query={
     "response_type":"code",
-    "client_id":"	KBKGkMPGxTXVFylQaGuWKl",
+    "client_id":"KBKGkMPGxTXVFylQaGuWKl",
     "redirect_uri":"https://line-notify-appliaction.herokuapp.com/notify/code",
     "scope":"notify",
     "state":userid
@@ -37,7 +37,7 @@ def notify_callback():
       "grant_type":"authorization_code",
       "code":code,
       "redirect_uri":"https://line-notify-appliaction.herokuapp.com/notify/code",
-      "client_id":"	KBKGkMPGxTXVFylQaGuWKl",
+      "client_id":"KBKGkMPGxTXVFylQaGuWKl",
       "client_secret":"fVgKxRnmByDL2JKZRVGBhTpZ4oGu8EjttyOiQ0Iv4pl"
     }
 
