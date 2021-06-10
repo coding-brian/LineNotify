@@ -1,4 +1,4 @@
-from flask import Flask,request
+from flask import Flask,request,redirect
 from DataBase import insertUserTable,updateUser,getUserTable
 from lineLib import SendtoNotify
 from Crawler import pluginversion
@@ -22,7 +22,7 @@ def lineNotifyAutorize():
 
   querysting=urllib.parse.urlencode(query)
 
-  return lineauthorizeurl+'?'+querysting
+  return redirect(lineauthorizeurl+'?'+querysting)
 
 @app.route("/notify/code",methods=['Get'])
 def notify_callback():
