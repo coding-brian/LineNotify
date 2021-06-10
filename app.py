@@ -1,5 +1,7 @@
 from flask import Flask,request
-from DataBase import insertUserTable,updateUser
+from DataBase import insertUserTable,updateUser,getUserTable
+from lineLib import SendtoNotify
+from Crawler import pluginversion
 import urllib
 import json
 app = Flask(__name__)
@@ -50,14 +52,35 @@ def notify_callback():
     accessToken=result["access_token"]
 
     if(accessToken):
-      result=updateUser.updateUser(state,accessToken)
+      dataresult=updateUser.updateUser(state,accessToken)
+      if (dataresult>0): 
+        sendMessagebyaccessToke(accessToken)
+        return '連動完成'
+      else:
+       return '有點問題，請重新使用'
 
-    return result
+    return '有點問題，請重新使用'
   else:
     errodescription=request.args.get('error_description')
 
     return 'state: '+state+' ,'+'error:'+error+' ,errodescription: '+errodescription
 
+@app.route("/notify/send",methods=['Get'])
+def sendMessage():
+  users=getUserTable.selectUser()
+  lenght=len(users)
+
+  if(lenght>0):
+    messsage=pluginversion.getVersioninfo('https://www.nopcommerceplus.com/discount-on-current-shopping-cart-subtotal')
+    for user in users:
+      sendresult=SendtoNotify.SendMessage(messsage,user['accesstoken'])
+
+  return 'None'
+
+def sendMessagebyaccessToke(accseeToken):
+  messsage=pluginversion.getVersioninfo('https://www.nopcommerceplus.com/discount-on-current-shopping-cart-subtotal')
+  sendresult=SendtoNotify.SendMessage(messsage,accseeToken)
+  return sendresult
 
 if(__name__=='__main__'):
   app.run()

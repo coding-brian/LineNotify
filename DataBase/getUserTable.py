@@ -1,4 +1,5 @@
 import psycopg2
+import psycopg2.extras
 
 def getUserFromUserID(userid):
   DATABASE_URL='postgres://ggohhcqkmvboto:01223202afc59e3f2a1f3dfc58e909a4fc4925e61ddb672993442a37bd395261@ec2-54-224-194-214.compute-1.amazonaws.com:5432/debntciff5iimr'
@@ -19,13 +20,14 @@ def getUserFromUserID(userid):
 
   return result
 
+# return type tuple
 def selectUser():
   
   DATABASE_URL='postgres://ggohhcqkmvboto:01223202afc59e3f2a1f3dfc58e909a4fc4925e61ddb672993442a37bd395261@ec2-54-224-194-214.compute-1.amazonaws.com:5432/debntciff5iimr'
 
   conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
-  cursor = conn.cursor()
+  cursor = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
 
   SQL=f"SELECT userid,accesstoken FROM lineuser"
 
