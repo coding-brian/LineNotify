@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/notify/register")
 def lineNotifyAutorize():
-  lineauthorizeurl='https: //notify-bot.line.me/oauth/authorize'
+  lineauthorizeurl='https://notify-bot.line.me/oauth/authorize'
 
   userid=insertUserTable.insertUserFromUserID()
 
