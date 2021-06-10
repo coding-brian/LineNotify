@@ -1,6 +1,6 @@
 import psycopg2
 
-def insertUserFromUserID():
+def updateUser(userid,accseetoken):
   
   DATABASE_URL='postgres://ggohhcqkmvboto:01223202afc59e3f2a1f3dfc58e909a4fc4925e61ddb672993442a37bd395261@ec2-54-224-194-214.compute-1.amazonaws.com:5432/debntciff5iimr'
 
@@ -8,12 +8,12 @@ def insertUserFromUserID():
 
   cursor = conn.cursor()
 
-  SQL="INSERT INTO lineuser (AccessToken) VALUES ('temp') RETURNING userId"
+  SQL=f"update lineuser set accessToken='{accseetoken}' where userid={userid}"
   
   cursor.execute(SQL)
   conn.commit()
 
-  result=cursor.fetchone()[0]
+  result=cursor.rowcount
 
   cursor.close()
   conn.close()
