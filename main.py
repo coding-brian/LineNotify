@@ -1,6 +1,6 @@
 from Crawler import pluginversion
-from DataBase import insertUserTable,updateUser
-
+from DataBase import insertUserTable,updateUser,getUserTable
+from lineLib import SendtoNotify
 
 #print(insertUserTable.insertUserFromUserID())
 
@@ -8,4 +8,8 @@ from DataBase import insertUserTable,updateUser
 
 #print(pluginversion.getVersioninfo('https://www.nopcommerceplus.com/discount-on-current-shopping-cart-subtotal'))
 
+a=[1]
+
+for b in a:
+  print(SendtoNotify.SendMessage('123','123'))
 
