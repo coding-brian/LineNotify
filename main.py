@@ -8,8 +8,3 @@ from lineLib import SendtoNotify
 
 #print(pluginversion.getVersioninfo('https://www.nopcommerceplus.com/discount-on-current-shopping-cart-subtotal'))
 
-a=[1]
-
-for b in a:
-  print(SendtoNotify.SendMessage('123','123'))
-
