@@ -40,7 +40,7 @@ def notify_callback():
       "code":code,
       "redirect_uri":"https://line-notify-appliaction.herokuapp.com/notify/code",
       "client_id":"KBKGkMPGxTXVFylQaGuWKl",
-      "client_secret":"fVgKxRnmByDL2JKZRVGBhTpZ4oGu8EjttyOiQ0Iv4pl"
+      "client_secret":""
     }
 
     data = urllib.parse.urlencode(body).encode()
